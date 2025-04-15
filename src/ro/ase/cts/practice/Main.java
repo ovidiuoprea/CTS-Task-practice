@@ -3,6 +3,7 @@ package ro.ase.cts.practice;
 import ro.ase.cts.practice.enums.FeatureType;
 import ro.ase.cts.practice.models.factory.AFeature;
 import ro.ase.cts.practice.models.factory.FeatureFactoryMethod;
+import ro.ase.cts.practice.models.singleton.lazy.GSMConnection;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,9 +16,25 @@ public class Main {
         AFeature speaker = featureFactory.getFeature(FeatureType.SPEAKER, "Speaker", 200);
 
 
+        System.out.println("Features factory method: ");
         System.out.println(antenna);
         System.out.println(battery);
         System.out.println(compass);
         System.out.println(speaker);
+
+        System.out.println("\n\nGSM Connection singleton:");
+        GSMConnection gsmConnection = GSMConnection.getInstance();
+        gsmConnection.call();
+        gsmConnection.call();
+        System.out.println("GSM Connection active calls: " + gsmConnection.getActiveCalls());
+
+        GSMConnection gsmConnection2 = GSMConnection.getInstance();
+
+        if(!gsmConnection.equals(gsmConnection2)) {
+            throw new RuntimeException("Singleton instance is not unique!");
+        }
+
+
+
     }
 }
