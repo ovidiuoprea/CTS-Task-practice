@@ -4,6 +4,7 @@ import ro.ase.cts.practice.models.factory.features.Antenna;
 import ro.ase.cts.practice.models.factory.features.Battery;
 import ro.ase.cts.practice.models.factory.features.Compass;
 import ro.ase.cts.practice.models.factory.features.Speaker;
+import ro.ase.cts.practice.models.prototype.OS;
 
 public class PhoneBuilder extends APhoneBuilder {
     Phone phone;
@@ -32,6 +33,12 @@ public class PhoneBuilder extends APhoneBuilder {
     @Override
     public APhoneBuilder addSpeaker(Speaker speaker) {
         phone.setSpeaker(speaker);
+        return this;
+    }
+
+    @Override
+    public APhoneBuilder addOs(OS os) {
+        phone.setOs(os);
         return this;
     }
 

@@ -91,12 +91,24 @@ public class Main {
             System.out.println("Could not create / clone OS instance due to " + e.getMessage());
         }
 
+        System.out.println("\nOS Prototype Factory:");
         try {
             OS factoryOSV1 = OSPrototypeFactoryEager.getOS(OSVersion.VERSION_1);
             OS factoryOSV2 = OSPrototypeFactoryEager.getOS(OSVersion.VERSION_2);
             OS factoryOSV3 = OSPrototypeFactoryEager.getOS(OSVersion.VERSION_3);
 
             System.out.println(factoryOSV1);
+
+            System.out.println("Adding OS to a Phone via Builder:");
+
+            Phone phoneWithOS = new PhoneBuilder("Phone with OS", "0.3.0beta")
+                    .addOs(factoryOSV1)
+                    .addAntenna((Antenna) antenna)
+                    .addBattery((Battery) battery)
+                    .addSpeaker((Speaker) speaker)
+                    .build();
+
+            System.out.println(phoneWithOS);
         }
         catch (CloneNotSupportedException e) {
             System.out.println("Could not get OS instance from prototype factory due to " + e.getMessage());
