@@ -9,4 +9,9 @@ public class Phone {
     AFeature antenna;
     AFeature compass;
     AFeature speaker;
+
+    public Phone(String identifier, String version) {
+        this.identifier = identifier;
+        this.version = version;
+    }
 }
