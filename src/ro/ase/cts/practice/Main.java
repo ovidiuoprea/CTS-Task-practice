@@ -1,9 +1,11 @@
 package ro.ase.cts.practice;
 
+import ro.ase.cts.practice.enums.CallType;
 import ro.ase.cts.practice.enums.FeatureType;
 import ro.ase.cts.practice.models.factory.AFeature;
 import ro.ase.cts.practice.models.factory.FeatureFactoryMethod;
 import ro.ase.cts.practice.models.singleton.lazy.GSMConnection;
+import ro.ase.cts.practice.models.singleton.registry.GSMConnectionManager;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,7 +24,7 @@ public class Main {
         System.out.println(compass);
         System.out.println(speaker);
 
-        System.out.println("\n\nGSM Connection singleton:");
+        System.out.println("\nGSM Connection singleton:");
         GSMConnection gsmConnection = GSMConnection.getInstance();
         gsmConnection.call();
         gsmConnection.call();
@@ -34,6 +36,16 @@ public class Main {
             throw new RuntimeException("Singleton instance is not unique!");
         }
 
+        System.out.println("\nGSM Connection singleton registry:");
+        GSMConnectionManager connectionPriority = GSMConnectionManager.getInstance(CallType.PRIORITY);
+        GSMConnectionManager connectionPriority2 = GSMConnectionManager.getInstance(CallType.PRIORITY);
+
+        if(!connectionPriority.equals(connectionPriority2)) {
+            throw new RuntimeException("Singleton instance is not unique!");
+        }
+
+        connectionPriority.call();
+        System.out.println("GSM Priority connection (registry) active calls: " + connectionPriority.getActiveCalls());
 
 
     }
