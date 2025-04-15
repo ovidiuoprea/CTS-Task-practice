@@ -13,26 +13,30 @@ public class PhoneBuilder extends APhoneBuilder {
     }
     @Override
     public APhoneBuilder addAntenna(Antenna antenna) {
-        return null;
+        phone.setAntenna(antenna);
+        return this;
     }
 
     @Override
     public APhoneBuilder addBattery(Battery battery) {
-        return null;
+        phone.setBattery(battery);
+        return this;
     }
 
     @Override
     public APhoneBuilder addCompass(Compass compass) {
-        return null;
+        phone.setCompass(compass);
+        return this;
     }
 
     @Override
     public APhoneBuilder addSpeaker(Speaker speaker) {
-        return null;
+        phone.setSpeaker(speaker);
+        return this;
     }
 
     @Override
     public Phone build() {
-        return null;
+        return this.phone;
     }
 }
