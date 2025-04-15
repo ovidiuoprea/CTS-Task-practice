@@ -2,6 +2,7 @@ package ro.ase.cts.practice;
 
 import ro.ase.cts.practice.enums.CallType;
 import ro.ase.cts.practice.enums.FeatureType;
+import ro.ase.cts.practice.enums.OSVersion;
 import ro.ase.cts.practice.models.builder.Phone;
 import ro.ase.cts.practice.models.builder.PhoneBuilder;
 import ro.ase.cts.practice.models.factory.AFeature;
@@ -11,6 +12,7 @@ import ro.ase.cts.practice.models.factory.features.Battery;
 import ro.ase.cts.practice.models.factory.features.Compass;
 import ro.ase.cts.practice.models.factory.features.Speaker;
 import ro.ase.cts.practice.models.prototype.OS;
+import ro.ase.cts.practice.models.prototype.factory.eager.OSPrototypeFactoryEager;
 import ro.ase.cts.practice.models.singleton.lazy.GSMConnection;
 import ro.ase.cts.practice.models.singleton.registry.GSMConnectionManager;
 
@@ -89,5 +91,15 @@ public class Main {
             System.out.println("Could not create / clone OS instance due to " + e.getMessage());
         }
 
+        try {
+            OS factoryOSV1 = OSPrototypeFactoryEager.getOS(OSVersion.VERSION_1);
+            OS factoryOSV2 = OSPrototypeFactoryEager.getOS(OSVersion.VERSION_2);
+            OS factoryOSV3 = OSPrototypeFactoryEager.getOS(OSVersion.VERSION_3);
+
+            System.out.println(factoryOSV1);
+        }
+        catch (CloneNotSupportedException e) {
+            System.out.println("Could not get OS instance from prototype factory due to " + e.getMessage());
+        }
     }
 }
