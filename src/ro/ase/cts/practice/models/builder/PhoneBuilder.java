@@ -8,6 +8,9 @@ import ro.ase.cts.practice.models.factory.features.Speaker;
 public class PhoneBuilder extends APhoneBuilder {
     Phone phone;
 
+    PhoneBuilder(String identifier, String version) {
+        phone = new Phone(identifier, version);
+    }
     @Override
     public APhoneBuilder addAntenna(Antenna antenna) {
         return null;
