@@ -1,4 +1,4 @@
-package ro.ase.cts.practice;
+package ro.ase.cts.practice.models.builder;
 
 import ro.ase.cts.practice.models.factory.AFeature;
 
