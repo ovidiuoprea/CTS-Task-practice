@@ -1,4 +1,4 @@
-package ro.ase.cts.practice;
+package ro.ase.cts.practice.models.factory;
 
 public abstract class AFeature {
     String name;
