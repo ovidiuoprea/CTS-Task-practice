@@ -1,4 +1,4 @@
-package ro.ase.cts.practice;
+package ro.ase.cts.practice.models.prototype;
 
 public class OS {
     int version = 0;
