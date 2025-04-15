@@ -10,24 +10,24 @@ public class Phone {
     AFeature compass;
     AFeature speaker;
 
-    public Phone(String identifier, String version) {
+    Phone(String identifier, String version) {
         this.identifier = identifier;
         this.version = version;
     }
 
-    public void setBattery(AFeature battery) {
+    void setBattery(AFeature battery) {
         this.battery = battery;
     }
 
-    public void setAntenna(AFeature antenna) {
+    void setAntenna(AFeature antenna) {
         this.antenna = antenna;
     }
 
-    public void setCompass(AFeature compass) {
+    void setCompass(AFeature compass) {
         this.compass = compass;
     }
 
-    public void setSpeaker(AFeature speaker) {
+    void setSpeaker(AFeature speaker) {
         this.speaker = speaker;
     }
 }
