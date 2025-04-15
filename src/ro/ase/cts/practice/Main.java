@@ -1,8 +1,14 @@
 package ro.ase.cts.practice;
 
 import ro.ase.cts.practice.enums.FeatureType;
+import ro.ase.cts.practice.models.builder.Phone;
+import ro.ase.cts.practice.models.builder.PhoneBuilder;
 import ro.ase.cts.practice.models.factory.AFeature;
 import ro.ase.cts.practice.models.factory.FeatureFactoryMethod;
+import ro.ase.cts.practice.models.factory.features.Antenna;
+import ro.ase.cts.practice.models.factory.features.Battery;
+import ro.ase.cts.practice.models.factory.features.Compass;
+import ro.ase.cts.practice.models.factory.features.Speaker;
 import ro.ase.cts.practice.models.singleton.lazy.GSMConnection;
 
 public class Main {
@@ -34,7 +40,27 @@ public class Main {
             throw new RuntimeException("Singleton instance is not unique!");
         }
 
+        System.out.println("Phone builder: ");
 
+        Phone phone = new PhoneBuilder("Phone 1", "0.0.1alpha")
+                .build();
 
+        System.out.println(phone);
+
+        Phone phone2 = new PhoneBuilder("Phone 2", "0.1.0alpha")
+                .addAntenna((Antenna) antenna)
+                .addBattery((Battery) battery)
+                .build();
+
+        System.out.println(phone2);
+
+        Phone phone3 = new PhoneBuilder("Phone 3", "0.2.0alpha")
+                .addAntenna((Antenna) antenna)
+                .addBattery((Battery) battery)
+                .addCompass((Compass) compass)
+                .addSpeaker((Speaker) speaker)
+                .build();
+
+        System.out.println(phone3);
     }
 }
