@@ -30,4 +30,16 @@ public class Phone {
     void setSpeaker(AFeature speaker) {
         this.speaker = speaker;
     }
+
+    @Override
+    public String toString() {
+        return "Phone{" +
+                "identifier='" + identifier + '\'' +
+                ", version='" + version + '\'' +
+                ", battery=" + battery +
+                ", antenna=" + antenna +
+                ", compass=" + compass +
+                ", speaker=" + speaker +
+                '}';
+    }
 }
