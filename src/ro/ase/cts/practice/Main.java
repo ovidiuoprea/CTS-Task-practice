@@ -10,6 +10,7 @@ import ro.ase.cts.practice.models.factory.features.Antenna;
 import ro.ase.cts.practice.models.factory.features.Battery;
 import ro.ase.cts.practice.models.factory.features.Compass;
 import ro.ase.cts.practice.models.factory.features.Speaker;
+import ro.ase.cts.practice.models.prototype.OS;
 import ro.ase.cts.practice.models.singleton.lazy.GSMConnection;
 import ro.ase.cts.practice.models.singleton.registry.GSMConnectionManager;
 
@@ -53,7 +54,7 @@ public class Main {
         connectionPriority.call();
         System.out.println("GSM Priority connection (registry) active calls: " + connectionPriority.getActiveCalls());
 
-        System.out.println("Phone builder: ");
+        System.out.println("\nPhone builder: ");
 
 
         Phone phone = new PhoneBuilder("Phone 1", "0.0.1alpha")
@@ -76,5 +77,17 @@ public class Main {
                 .build();
 
         System.out.println(phone3);
+
+        System.out.println("\nOS Prototype: ");
+        try {
+            OS os = new OS(1);
+
+            OS os2 = (OS)os.clone();
+
+            System.out.println("Cloned OS: " + os2);
+        } catch (InterruptedException | CloneNotSupportedException e) {
+            System.out.println("Could not create / clone OS instance due to " + e.getMessage());
+        }
+
     }
 }
